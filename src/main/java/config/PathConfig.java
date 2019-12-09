@@ -18,6 +18,9 @@ import util.Message;
 
 public class PathConfig {
 
+	/**
+	 * Configure the routes and exception to the Spark
+	 */
 	static public void init() {
 		
 		AccountResource accountResource = new AccountResource();
@@ -33,7 +36,7 @@ public class PathConfig {
 					Spark.get("/:id", (req, res) -> {return accountResource.findById(req, res);}, JsonUtil.json());
 					Spark.post("", (req, res) -> {return accountResource.save(req, res);}, JsonUtil.json());	
 					
-					Spark.get("/:toAccountId/transferences", (req, res) -> {return transactionResource.findAllTransactionByAccount(req, res);}, JsonUtil.json());
+					Spark.get("/:id/transferences", (req, res) -> {return transactionResource.findAllTransactionByAccount(req, res);}, JsonUtil.json());
 				});
 				Spark.path("transferences", () -> {
 					Spark.get("", (req, res) -> {return transactionResource.findAll(req, res);}, JsonUtil.json());		

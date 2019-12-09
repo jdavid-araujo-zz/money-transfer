@@ -5,7 +5,6 @@ import spark.Request;
 import spark.Response;
 import com.google.gson.Gson;
 
-import exceptionhandler.exception.AccountNotFoundException;
 import model.Account;
 
 import java.util.List;
@@ -32,10 +31,6 @@ public class AccountResource {
 		Long id = Long.parseLong(request.params(":id"));
 		
 		Account account = this.accountService.findById(id);
-		
-		if(account == null) {
-			throw new AccountNotFoundException("Acccount not found with id: " + id);		
-		}
 		
 		return account;
 	}

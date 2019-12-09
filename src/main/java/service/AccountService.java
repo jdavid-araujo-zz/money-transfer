@@ -17,10 +17,19 @@ public class AccountService {
 		this.accountRepository = new AccountRepositoryImpl();
 	}
 
+	/**
+	 * Return all Accounts
+	 * @return A list of Account
+	 */
 	public List<Account> findAll() {
 		return this.accountRepository.findAll();
 	}
 	
+	/**
+	 * Return Account by Id
+	 * @param id
+	 * @return A Single Account
+	 */
 	public Account findById(Long id ){
 		Account account = this.accountRepository.findById(id);
 		
@@ -31,6 +40,11 @@ public class AccountService {
 		return account;
 	}
 	
+	/**
+	 * Create a new Account
+	 * @param account
+	 * @return the id of the new Account
+	 */
 	public long create(Account account) {
 		
 		if(account.getBalance().compareTo(BigDecimal.ZERO) <= 0) {
@@ -40,6 +54,11 @@ public class AccountService {
 		return this.accountRepository.insertAccount(account);
 	}
 
+	/**
+	 * Update a Account
+	 * @param id of the Account
+	 * @param balance new value for the Account's balance
+	 */
 	public void update(Long id, BigDecimal balance) {
 		this.accountRepository.update(id, balance);
 	}

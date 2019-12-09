@@ -19,6 +19,11 @@ public class TransactionService {
 		this.accountService = new AccountService();
 	}
 
+	/**
+	 * Create a new Transaction
+	 * @param transaction the object to the persisted
+	 * @return the id of the new Transaction
+	 */
 	public Long create(Transaction transaction) {
 
 		this.validTransaction(transaction);
@@ -26,23 +31,47 @@ public class TransactionService {
 		return this.transactionRepository.save(transaction);
 	}
 
+	/**
+	 * Return a list of Transaction that sended a amount of money
+	 * @param fromAccountId the id that sended
+	 * @return the list of Transaction
+	 */
 	public List<Transaction> findAllTransactionByFromAccount(Long fromAccountId) {
 		return this.transactionRepository.findAllTransactionByFromAccount(fromAccountId);
 	}
 
+	/**
+	 * Return a list of Transaction that received a amount of money
+	 * @param toAccountId the id that received
+	 * @return the list of Transaction
+	 */
 	public List<Transaction> findAllTransactionByToAccount(Long toAccountId) {
 		return this.transactionRepository.findAllTransactionByToAccount(toAccountId);
 	}
 
+	/**
+	 * Return a list of Transaction
+	 * @param fromAccountId the id that sended
+	 * @param toAccountId the id that received
+	 * @return the list of Transaction
+	 */
 	public List<Transaction> findAllTransactionByFromAccountAndToAccount(Long fromAccountId, Long toAccountId) {
 		return this.transactionRepository.findAllTransactionByFromAccountAndToAccount(fromAccountId, toAccountId);
 	}
 	
+	/**
+	 * Return all Transaction
+	 * @return the list of Transaction
+	 */
 	public List<Transaction> findAll() {
 		return this.transactionRepository.findAll();
 	}
 
 
+	/**
+	 * Check if the transaction is valid
+	 * @param transaction the object to the verifed
+	 */
 	public void validTransaction(Transaction transaction) {
 
 		if (transaction.getFromAccount().equals(transaction.getToAccount())) {
