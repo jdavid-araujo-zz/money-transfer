@@ -40,6 +40,8 @@ public class TransactionService {
 	 * @return the list of Transaction
 	 */
 	public List<Transaction> findAllTransactionByFromAccount(Long fromAccountId) {
+		this.accountService.findById(fromAccountId);
+		
 		return this.transactionRepository.findAllTransactionByFromAccount(fromAccountId);
 	}
 
@@ -49,7 +51,9 @@ public class TransactionService {
 	 * @param toAccountId the id that received
 	 * @return the list of Transaction
 	 */
-	public List<Transaction> findAllTransactionByToAccount(Long toAccountId) {
+	public List<Transaction> findAllTransactionByToAccount(Long toAccountId) {		
+		this.accountService.findById(toAccountId);
+		
 		return this.transactionRepository.findAllTransactionByToAccount(toAccountId);
 	}
 
@@ -100,7 +104,6 @@ public class TransactionService {
 		}
 
 		try {
-			
 			this.accountService.update(fromAccount.getId(), newBalance);
 			this.accountService.update(toAccount.getId(), toAccount.getBalance().add(transaction.getAmount()));
 

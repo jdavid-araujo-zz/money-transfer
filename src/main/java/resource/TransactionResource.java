@@ -33,15 +33,15 @@ public class TransactionResource {
 	public List<Transaction> findAllTransactionByAccount(Request request, Response response) {
 		response.status(HttpServletResponse.SC_OK);
 
-		Long toAccountId = Long.parseLong(request.params(":id"));
+		Long id = Long.parseLong(request.params(":id"));
 		String operation = request.queryParams("f");
 
 		List<Transaction> account = new ArrayList<Transaction>();
 
 		if (operation.equals("t")) {
-			account = this.transactionService.findAllTransactionByToAccount(toAccountId);
+			account = this.transactionService.findAllTransactionByToAccount(id);
 		} else {
-			account = this.transactionService.findAllTransactionByFromAccount(toAccountId);
+			account = this.transactionService.findAllTransactionByFromAccount(id);
 		}
 
 		return account;
