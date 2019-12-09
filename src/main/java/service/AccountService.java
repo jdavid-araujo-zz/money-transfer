@@ -31,13 +31,13 @@ public class AccountService {
 		return account;
 	}
 	
-	public void create(Account account) {
+	public long create(Account account) {
 		
 		if(account.getBalance().compareTo(BigDecimal.ZERO) <= 0) {
 			throw new AmountMoneyException(Message.AMOUT_MONEY_TRANSFER_MUST_MORE_0);
 		}
 		
-		this.accountRepository.insertAccount(account);
+		return this.accountRepository.insertAccount(account);
 	}
 
 	public void update(Long id, BigDecimal balance) {

@@ -19,11 +19,11 @@ public class TransactionService {
 		this.accountService = new AccountService();
 	}
 
-	public void create(Transaction transaction) {
+	public Long create(Transaction transaction) {
 
 		this.validTransaction(transaction);
 		
-		this.transactionRepository.save(transaction);
+		return this.transactionRepository.save(transaction);
 	}
 
 	public List<Transaction> findAllTransactionByFromAccount(Long fromAccountId) {

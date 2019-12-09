@@ -45,8 +45,8 @@ public class AccountResource {
 
 		Account account = new Gson().fromJson(request.body(), Account.class);
 
-	    this.accountService.create(account);
+	    long id =this.accountService.create(account);
 	    
-	    return null;
+	    return new Account(id, account.getOwner(), account.getBalance());
 	}
 }

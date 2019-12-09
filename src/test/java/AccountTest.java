@@ -40,17 +40,19 @@ public class AccountTest {
     
 	@Test
 	public void createNewAccoundSucess() throws UnirestException {
-        HttpResponse<String> response = Unirest.post("http://localhost:4567/api/v1/accounts")
+        HttpResponse<String> response = Unirest.post("http://localhost:8080/api/v1/accounts")
                 .header("accept", "application/json")
                 .body(new Gson().toJson(mockNewAccount()))
                 .asString();
         
+        Account account = new Gson().fromJson(response.getBody(), Account.class);
+
         assertEquals(response.getStatus(),HttpStatus.SC_CREATED);
 	}
 	
 	@Test
 	public void createNewAccoundBalanceInvalid() throws UnirestException {
-        HttpResponse<String> response = Unirest.post("http://localhost:4567/api/v1/accounts")
+        HttpResponse<String> response = Unirest.post("http://localhost:8080/api/v1/accounts")
                 .header("accept", "application/json")
                 .body(new Gson().toJson(mockNewAccountBalanceInvalid()))
                 .asString();
@@ -62,7 +64,7 @@ public class AccountTest {
 	
 	@Test
 	public void findAccount() throws UnirestException {
-        HttpResponse<String> response = Unirest.get("http://localhost:4567/api/v1/accounts/1000")
+        HttpResponse<String> response = Unirest.get("http://localhost:8080/api/v1/accounts/1000")
                 .header("accept", "application/json")
                 .asString();
         
@@ -76,7 +78,7 @@ public class AccountTest {
 	
 	@Test
 	public void findAccoundNotExist() throws UnirestException {
-        HttpResponse<String> response = Unirest.get("http://localhost:4567/api/v1/accounts/2000")
+        HttpResponse<String> response = Unirest.get("http://localhost:8080/api/v1/accounts/2000")
                 .header("accept", "application/json")
                 .asString();
         
@@ -88,7 +90,7 @@ public class AccountTest {
 	
     @Test
     public void findAllAccounts() throws UnirestException {
-        HttpResponse<String> response = Unirest.get("http://localhost:4567/api/v1/accounts")
+        HttpResponse<String> response = Unirest.get("http://localhost:8080/api/v1/accounts")
                 .header("accept", "application/json")
                 .asString();
         

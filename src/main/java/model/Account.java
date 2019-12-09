@@ -12,6 +12,13 @@ public class Account {
 	
 	public Account() {}
 	
+	public Account(Long id, String owner, BigDecimal balance) {
+		super();
+		this.id = id;
+		this.owner = owner;
+		this.balance = balance;
+	}
+	
 	public Account(String owner, BigDecimal balance) {
 		super();
 		this.owner = owner;

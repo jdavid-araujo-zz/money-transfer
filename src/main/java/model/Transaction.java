@@ -13,6 +13,15 @@ public class Transaction {
 
 	public Transaction() {}
 	
+	public Transaction(Long id, Long fromAccount, Long toAccount, BigDecimal amount) {
+		super();
+		this.id = id;
+		this.fromAccount = fromAccount;
+		this.toAccount = toAccount;
+		this.amount = amount;
+	}
+	
+	
 	public Transaction(Long fromAccount, Long toAccount, BigDecimal amount) {
 		super();
 		this.fromAccount = fromAccount;

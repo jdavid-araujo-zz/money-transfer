@@ -57,7 +57,7 @@ public class TransferenceTest {
     
     @Test
     public void findAllTransferences() throws UnirestException {
-        HttpResponse<String> response = Unirest.get("http://localhost:4567/api/v1/transferences")
+        HttpResponse<String> response = Unirest.get("http://localhost:8080/api/v1/transferences")
                 .header("accept", "application/json")
                 .asString();
         
@@ -76,7 +76,7 @@ public class TransferenceTest {
     
     @Test
     public void makeTransference() throws UnirestException {
-        HttpResponse<String> response = Unirest.post("http://localhost:4567/api/v1/transferences")
+        HttpResponse<String> response = Unirest.post("http://localhost:8080/api/v1/transferences")
                 .header("accept", "application/json")
                 .body(new Gson().toJson(mockTransference()))
                 .asString();
@@ -87,7 +87,7 @@ public class TransferenceTest {
     
     @Test
     public void makeTransferenceSameAccount() throws UnirestException {
-        HttpResponse<String> response = Unirest.post("http://localhost:4567/api/v1/transferences")
+        HttpResponse<String> response = Unirest.post("http://localhost:8080/api/v1/transferences")
                 .header("accept", "application/json")
                 .body(new Gson().toJson(mockTransferenceSameAccount()))
                 .asString();
@@ -99,7 +99,7 @@ public class TransferenceTest {
     
     @Test
     public void makeTransferenceAccountNotExist() throws UnirestException {
-        HttpResponse<String> response = Unirest.post("http://localhost:4567/api/v1/transferences")
+        HttpResponse<String> response = Unirest.post("http://localhost:8080/api/v1/transferences")
                 .header("accept", "application/json")
                 .body(new Gson().toJson(mockTransferenceAccountNotExist()))
                 .asString();
@@ -111,7 +111,7 @@ public class TransferenceTest {
     
     @Test
     public void makeTransferenceAmountNegative() throws UnirestException {
-        HttpResponse<String> response = Unirest.post("http://localhost:4567/api/v1/transferences")
+        HttpResponse<String> response = Unirest.post("http://localhost:8080/api/v1/transferences")
                 .header("accept", "application/json")
                 .body(new Gson().toJson(mockAmountNegative()))
                 .asString();
@@ -123,7 +123,7 @@ public class TransferenceTest {
     
     @Test
     public void makeTransferenceAmountBalanceInsufficient() throws UnirestException {
-        HttpResponse<String> response = Unirest.post("http://localhost:4567/api/v1/transferences")
+        HttpResponse<String> response = Unirest.post("http://localhost:8080/api/v1/transferences")
                 .header("accept", "application/json")
                 .body(new Gson().toJson(mockAmountBalanceInsufficient()))
                 .asString();

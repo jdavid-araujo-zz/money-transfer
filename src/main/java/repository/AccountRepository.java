@@ -18,7 +18,7 @@ public interface AccountRepository {
 	@SqlUpdate("insert into account (owner, balance, create_date) VALUES (:owner, :balance, :now)")
 	@GetGeneratedKeys("id")
 	@Timestamped
-	long save(@BindBean Account account);
+	Long save(@BindBean Account account);
 	
 	@SqlUpdate("update account set balance=:balance where id=:id")
 	@RegisterBeanMapper(Account.class)

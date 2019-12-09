@@ -16,6 +16,7 @@
 		<jdbi3>3.11.1</jdbi3>
 		<h2>1.4.200</h2>
 		<unirest>1.4.9</unirest>
+		<junit>4.12</junit>
 	</properties>
 
 	<dependencies>
@@ -64,7 +65,7 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.12</version>
+			<version>${junit}</version>
 			<scope>test</scope>
 		</dependency>
 

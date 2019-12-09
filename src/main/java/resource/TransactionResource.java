@@ -52,8 +52,8 @@ public class TransactionResource {
 
 		Transaction transaction = new Gson().fromJson(request.body(), Transaction.class);
 
-		this.transactionService.create(transaction);
+		Long id = this.transactionService.create(transaction);
 
-		return null;
+		return new Transaction(id, transaction.getFromAccount(), transaction.getToAccount(), transaction.getAmount());
 	}
 }

@@ -13,8 +13,8 @@ public class AccountRepositoryImpl {
 
     private Jdbi jdbi = JDBIConfig.getJdbi();
     
-    public void insertAccount(Account account) {
-         jdbi.withExtension(AccountRepository.class,
+    public Long insertAccount(Account account) {
+         return jdbi.withExtension(AccountRepository.class,
                 dao -> dao.save(account));
     }
     
