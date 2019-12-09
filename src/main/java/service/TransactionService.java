@@ -1,6 +1,7 @@
 package service;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.List;
 
 import exceptionhandler.exception.TransactionException;
@@ -91,6 +92,7 @@ public class TransactionService {
 
 		Account toAccount = this.accountService.findById(transaction.getToAccount());
 
+		transaction.setAmount(transaction.getAmount().setScale(2, RoundingMode.DOWN));
 		BigDecimal newBalance = fromAccount.getBalance().subtract(transaction.getAmount());
 
 		if (newBalance.compareTo(BigDecimal.ZERO) < 0) {

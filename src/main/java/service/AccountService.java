@@ -1,6 +1,7 @@
 package service;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.List;
 
 import exceptionhandler.exception.AccountNotFoundException;
@@ -53,6 +54,8 @@ public class AccountService {
 		if (account.getBalance().compareTo(BigDecimal.ZERO) <= 0) {
 			throw new AmountMoneyException(Message.AMOUT_MONEY_TRANSFER_MUST_MORE_0);
 		}
+		
+		account.setBalance(account.getBalance().setScale(2, RoundingMode.DOWN));
 
 		return this.accountRepository.insertAccount(account);
 	}
