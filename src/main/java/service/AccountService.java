@@ -66,7 +66,7 @@ public class AccountService {
 	 * @param id      of the Account
 	 * @param balance new value for the Account's balance
 	 */
-	public void update(Long id, BigDecimal balance) {
+	public synchronized void update(Long id, BigDecimal balance) {
 		this.accountRepository.update(id, balance);
 	}
 

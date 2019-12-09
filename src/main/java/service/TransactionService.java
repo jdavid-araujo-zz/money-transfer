@@ -78,7 +78,7 @@ public class TransactionService {
 	 * 
 	 * @param transaction the object to the verifed
 	 */
-	public void validTransaction(Transaction transaction) {
+	public synchronized void validTransaction(Transaction transaction) {
 
 		if (transaction.getFromAccount().equals(transaction.getToAccount())) {
 			throw new TransactionException(Message.TRANSFERENCE_SAME_ACCOUNT_NOT_ALLOW);
@@ -96,7 +96,7 @@ public class TransactionService {
 		BigDecimal newBalance = fromAccount.getBalance().subtract(transaction.getAmount());
 
 		if (newBalance.compareTo(BigDecimal.ZERO) < 0) {
-			throw new TransactionException(Message.AMMOUNT_INSUFFICIENT + ": " + transaction.getAmount());
+			throw new TransactionException(Message.AMMOUNT_INSUFFICIENT);
 		}
 
 		try {

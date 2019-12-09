@@ -130,6 +130,6 @@ public class TransferenceTest {
         
         Error error = new Gson().fromJson(response.getBody(), Error.class);      
         assertEquals(response.getStatus(),HttpStatus.SC_INTERNAL_SERVER_ERROR);
-        assertEquals(error.getErrorMessage().getMessageUser(), Message.AMMOUNT_INSUFFICIENT + ": " + 10000); 
+        assertEquals(error.getErrorMessage().getMessageUser(), Message.AMMOUNT_INSUFFICIENT); 
     }
 }
