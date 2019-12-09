@@ -100,7 +100,7 @@ public class TransactionService {
 		}
 
 		try {
-
+			
 			this.accountService.update(fromAccount.getId(), newBalance);
 			this.accountService.update(toAccount.getId(), toAccount.getBalance().add(transaction.getAmount()));
 
