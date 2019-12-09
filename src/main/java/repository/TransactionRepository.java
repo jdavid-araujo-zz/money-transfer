@@ -18,19 +18,20 @@ public interface TransactionRepository {
 	@GetGeneratedKeys("id")
 	@Timestamped
 	Long save(@BindBean Transaction transaction);
-	
+
 	@SqlQuery("SELECT * FROM transaction where from_account=:fromAccountId")
 	@RegisterBeanMapper(Transaction.class)
 	List<Transaction> findAllTransactionByFromAccount(@Bind("fromAccountId") Long fromAccountId);
-	
+
 	@SqlQuery("SELECT * FROM transaction where to_account=:toAccountId")
 	@RegisterBeanMapper(Transaction.class)
 	List<Transaction> findAllTransactionByToAccount(@Bind("toAccountId") Long toAccountId);
-	
+
 	@SqlQuery("SELECT * FROM transaction where from_account=:fromAccountId and to_account=:toAccountId")
 	@RegisterBeanMapper(Transaction.class)
-	List<Transaction> findAllTransactionByFromAccountAndToAccount(@Bind("id") Long fromAccountId, @Bind("id") Long toAccountId);
-	
+	List<Transaction> findAllTransactionByFromAccountAndToAccount(@Bind("id") Long fromAccountId,
+			@Bind("id") Long toAccountId);
+
 	@SqlQuery("SELECT * FROM transaction order by id")
 	@RegisterBeanMapper(Transaction.class)
 	List<Transaction> findAll();

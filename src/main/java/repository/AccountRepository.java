@@ -19,7 +19,7 @@ public interface AccountRepository {
 	@GetGeneratedKeys("id")
 	@Timestamped
 	Long save(@BindBean Account account);
-	
+
 	@SqlUpdate("update account set balance=:balance where id=:id")
 	@RegisterBeanMapper(Account.class)
 	Integer update(@Bind("id") Long id, @Bind("balance") BigDecimal balance);
@@ -27,7 +27,7 @@ public interface AccountRepository {
 	@SqlQuery("SELECT * FROM account ORDER BY id")
 	@RegisterBeanMapper(Account.class)
 	List<Account> findAll();
-	
+
 	@SqlQuery("SELECT * FROM account where id=:id")
 	@RegisterBeanMapper(Account.class)
 	Account findById(@Bind("id") Long id);
