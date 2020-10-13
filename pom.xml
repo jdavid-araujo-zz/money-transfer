@@ -15,7 +15,7 @@
 		<jdbi3>3.11.1</jdbi3>
 		<h2>1.4.200</h2>
 		<unirest>1.4.9</unirest>
-		<junit>4.12</junit>
+		<junit>4.13.1</junit>
 	</properties>
 
 	<dependencies>
