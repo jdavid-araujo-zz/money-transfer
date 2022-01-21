@@ -13,7 +13,7 @@
 		<gson>2.8.6</gson>
 		<sl4j>1.7.21</sl4j>
 		<jdbi3>3.11.1</jdbi3>
-		<h2>1.4.200</h2>
+		<h2>2.1.210</h2>
 		<unirest>1.4.9</unirest>
 		<junit>4.12</junit>
 	</properties>
@@ -23,7 +23,7 @@
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
-			<version>1.4.200</version>
+			<version>2.1.210</version>
 			<scope>test</scope>
 		</dependency>
 
